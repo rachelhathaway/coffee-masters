@@ -18,7 +18,7 @@ export type Services = {
     fetchMenu: () => Promise<MenuItems>;
   };
   Menu: {
-    initialize: () => void;
+    initialize: () => Promise<void | MenuItems>;
   };
   Router: {
     initialize: () => void;
