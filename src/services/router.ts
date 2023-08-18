@@ -7,7 +7,7 @@ export const router: Services["Router"] = {
     navItems?.forEach((navItem) =>
       navItem.addEventListener("click", function handleClick(event) {
         event.preventDefault();
-        router.navigateTo(this.href);
+        router.navigateTo(navItem.href);
       })
     );
 
