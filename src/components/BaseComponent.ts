@@ -1,10 +1,12 @@
 export class BaseComponent extends HTMLElement {
+  root: ShadowRoot;
   templateId: string;
 
   constructor(templateId: string) {
     super();
 
     this.templateId = templateId;
+    this.root = this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
@@ -14,7 +16,7 @@ export class BaseComponent extends HTMLElement {
     const content = template?.content.cloneNode(true);
 
     if (content) {
-      this.appendChild(content);
+      this.root.appendChild(content);
     }
   }
 }
