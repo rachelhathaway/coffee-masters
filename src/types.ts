@@ -22,7 +22,7 @@ export type Services = {
   };
   Router: {
     initialize: () => void;
-    navigateTo: (url: string, state?: Record<string, any>) => void;
+    navigateTo: (url: string, addToHistory?: boolean) => void;
   };
   Store: {
     menu: MenuItems | null;

@@ -15,6 +15,10 @@ const initializeNav = () => {
     })
   );
 
+  window.addEventListener("popstate", (event) => {
+    router.navigateTo(event.state.path, false);
+  });
+
   if (location.pathname !== "/") {
     router.navigateTo(location.pathname);
   }
@@ -62,16 +66,12 @@ export const router: Services["Router"] = {
   initialize: () => {
     initializeNav();
   },
-  navigateTo: (
-    url: string,
-    state?: Record<string, any>,
-    addToHistory = true
-  ) => {
+  navigateTo: (path: string, addToHistory = true) => {
     if (addToHistory) {
-      history.pushState(state, "", url);
+      history.pushState({ path }, "", path);
     }
 
-    setPageContent(url);
+    setPageContent(path);
     resetScrollPosition();
   },
 };
