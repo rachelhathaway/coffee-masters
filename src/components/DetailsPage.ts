@@ -1,6 +1,10 @@
-export class DetailsPage extends HTMLElement {
+import { BaseComponent } from "./BaseComponent";
+
+const TEMPLATE_ID = "details-page-template";
+
+export class DetailsPage extends BaseComponent {
   constructor() {
-    super();
+    super(TEMPLATE_ID);
   }
 }
 

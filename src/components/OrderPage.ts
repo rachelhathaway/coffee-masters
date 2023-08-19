@@ -1,6 +1,10 @@
-export class OrderPage extends HTMLElement {
+import { BaseComponent } from "./BaseComponent";
+
+const TEMPLATE_ID = "order-form-template";
+
+export class OrderPage extends BaseComponent {
   constructor() {
-    super();
+    super(TEMPLATE_ID);
   }
 }
 
