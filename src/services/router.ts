@@ -20,10 +20,10 @@ const initializeNav = () => {
   }
 };
 
-const setPageContent = (url: string) => {
+const setPageContent = (path: string) => {
   let newPageEl = document.createElement("h1");
 
-  switch (url) {
+  switch (path) {
     case "/": {
       newPageEl.textContent = "Menu";
       break;
@@ -33,7 +33,13 @@ const setPageContent = (url: string) => {
       break;
     }
     default:
-      newPageEl.textContent = "404";
+      if (path.startsWith("/product-")) {
+        newPageEl.textContent = "Details";
+        newPageEl.dataset.productId = path.substring(path.lastIndexOf("-") + 1);
+      } else {
+        newPageEl.textContent = "404";
+      }
+
       break;
   }
 
