@@ -1,6 +1,6 @@
 export class BaseComponent extends HTMLElement {
-  root: ShadowRoot;
-  template: HTMLTemplateElement | undefined;
+  private root: ShadowRoot;
+  private template: HTMLTemplateElement | undefined;
 
   constructor(templateId: string) {
     super();
