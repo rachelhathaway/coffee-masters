@@ -25,22 +25,26 @@ const initializeNav = () => {
 };
 
 const setPageContent = (path: string) => {
-  let newPageEl = document.createElement("h1");
+  let newPageEl;
 
   switch (path) {
     case "/": {
+      newPageEl = document.createElement("cm-menu-page");
       newPageEl.textContent = "Menu";
       break;
     }
     case "/order": {
+      newPageEl = document.createElement("cm-order-page");
       newPageEl.textContent = "Your Order";
       break;
     }
     default:
       if (path.startsWith("/product-")) {
+        newPageEl = document.createElement("cm-details-page");
         newPageEl.textContent = "Details";
         newPageEl.dataset.productId = path.substring(path.lastIndexOf("-") + 1);
       } else {
+        newPageEl = document.createElement("h1");
         newPageEl.textContent = "404";
       }
 
