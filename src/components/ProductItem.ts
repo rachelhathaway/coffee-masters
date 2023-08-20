@@ -25,7 +25,7 @@ export class ProductItem extends BaseComponent {
       }
 
       if (imageEl) {
-        imageEl.src = `/src/data/images/${product.image}`;
+        imageEl.src = `/images/${product.image}`;
       }
 
       if (linkEl) {
