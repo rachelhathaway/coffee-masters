@@ -1,8 +1,8 @@
 import { TEMPLATE_IDS } from "../constants";
 import css from "./MenuPage.css?inline";
-import { BaseComponent } from "./BaseComponent";
+import { BasePageComponent } from "./BasePageComponent";
 
-export class MenuPage extends BaseComponent {
+export class MenuPage extends BasePageComponent {
   constructor() {
     super(TEMPLATE_IDS.menuPage, css);
   }

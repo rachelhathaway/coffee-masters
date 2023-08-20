@@ -1,4 +1,4 @@
-export class BaseComponent extends HTMLElement {
+export class BasePageComponent extends HTMLElement {
   private root: ShadowRoot;
   private template: HTMLTemplateElement | undefined;
 
@@ -9,7 +9,11 @@ export class BaseComponent extends HTMLElement {
     styles.textContent = css;
   }
 
-  constructor(templateId: string, css: string) {
+  getRoot() {
+    return this.root;
+  }
+
+  constructor(templateId: string, css?: string) {
     super();
 
     this.root = this.attachShadow({ mode: "open" });
@@ -17,7 +21,9 @@ export class BaseComponent extends HTMLElement {
       (t) => t.id === templateId
     );
 
-    this.applyStyles(css);
+    if (css) {
+      this.applyStyles(css);
+    }
   }
 
   connectedCallback() {
