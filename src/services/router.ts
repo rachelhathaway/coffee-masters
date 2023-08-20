@@ -19,9 +19,7 @@ const initializeNav = () => {
     router.navigateTo(event.state.path, false);
   });
 
-  if (location.pathname !== "/") {
-    router.navigateTo(location.pathname);
-  }
+  router.navigateTo(location.pathname);
 };
 
 const setPageContent = (path: string) => {
