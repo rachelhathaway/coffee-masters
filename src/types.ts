@@ -31,3 +31,8 @@ export type Services = {
     cart: Products;
   };
 };
+
+export type App = {
+  router: Services["Router"];
+  store: Services["Store"];
+};
