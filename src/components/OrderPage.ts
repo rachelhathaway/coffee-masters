@@ -1,11 +1,10 @@
+import { TEMPLATE_IDS } from "../constants";
 import css from "./OrderPage.css?inline";
 import { BaseComponent } from "./BaseComponent";
 
-const TEMPLATE_ID = "order-form-template";
-
 export class OrderPage extends BaseComponent {
   constructor() {
-    super(TEMPLATE_ID, css);
+    super(TEMPLATE_IDS.orderPage, css);
   }
 }
 

@@ -1,11 +1,10 @@
+import { TEMPLATE_IDS } from "../constants";
 import css from "./MenuPage.css?inline";
 import { BaseComponent } from "./BaseComponent";
 
-const TEMPLATE_ID = "menu-page-template";
-
 export class MenuPage extends BaseComponent {
   constructor() {
-    super(TEMPLATE_ID, css);
+    super(TEMPLATE_IDS.menuPage, css);
   }
 }
 
