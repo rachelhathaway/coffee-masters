@@ -1,14 +1,13 @@
-import type { App } from "./types";
 import { menu } from "./services/menu";
 import { router } from "./services/router";
 import { storeProxy } from "./services/store";
 
-const app: App = {
+const app = {
   router,
   store: storeProxy,
 };
 
-(<any>window).app = app;
+window.app = app;
 
 const main = () => {
   router.initialize();

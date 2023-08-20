@@ -35,7 +35,7 @@ export class ProductItem extends BaseComponent {
           if (target?.tagName.toLowerCase() == "button") {
             //TODO
           } else {
-            (<any>window).app.router.navigateTo(`/product-${product.id}`);
+            window.app.router.navigateTo(`/product-${product.id}`);
           }
 
           event.preventDefault();
