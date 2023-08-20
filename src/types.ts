@@ -20,6 +20,7 @@ export type Services = {
     fetchMenu: () => Promise<MenuItems>;
   };
   Menu: {
+    getProductById: (productId: number) => Promise<Product | undefined>;
     initialize: () => Promise<void | MenuItems>;
   };
   Router: {
