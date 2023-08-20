@@ -6,6 +6,8 @@ export type Product = {
   price: number;
 };
 
+export type Products = Product[];
+
 export type MenuItem = {
   name: string;
   products: Product[];
@@ -25,7 +27,7 @@ export type Services = {
     navigateTo: (url: string, addToHistory?: boolean) => void;
   };
   Store: {
-    menu: MenuItems | null;
-    cart: Product[];
+    menu: MenuItems;
+    cart: Products;
   };
 };
