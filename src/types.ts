@@ -10,7 +10,7 @@ export type Products = Product[];
 
 export type MenuItem = {
   name: string;
-  products: Product[];
+  products: Products;
 };
 
 export type MenuItems = MenuItem[];
