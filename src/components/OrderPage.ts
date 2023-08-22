@@ -1,8 +1,50 @@
+import type { User } from "../types";
 import { EVENTS, TEMPLATE_IDS } from "../constants";
 import css from "./OrderPage.css?inline";
 import { BasePageComponent } from "./BasePageComponent";
 
 export class OrderPage extends BasePageComponent {
+  #user: User = {
+    name: "",
+    phone: "",
+    email: "",
+  };
+
+  setFormBindings(form: HTMLFormElement) {
+    this.#user = new Proxy(this.#user, {
+      set(target: User, property: keyof User, value: string) {
+        target[property] = value;
+
+        const formElements = form.elements;
+
+        formElements[property].value = value;
+
+        return true;
+      },
+    });
+
+    Array.from(form.elements).forEach((el) => {
+      el.addEventListener("change", () => {
+        const name = (el as HTMLInputElement).name;
+        const value = (el as HTMLInputElement).value;
+
+        if (name && value) {
+          this.#user[name as keyof User] = value;
+        }
+      });
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      alert(`Thanks for your order ${this.#user.name}!`);
+
+      this.#user.name = "";
+      this.#user.email = "";
+      this.#user.phone = "";
+    });
+  }
+
   constructor() {
     super(TEMPLATE_IDS.orderPage, css);
   }
@@ -15,6 +57,12 @@ export class OrderPage extends BasePageComponent {
     });
 
     this.render();
+
+    const form = this.getRoot().querySelector("form");
+
+    if (form) {
+      this.setFormBindings(form);
+    }
   }
 
   render() {
@@ -36,19 +84,17 @@ export class OrderPage extends BasePageComponent {
     }
 
     const listEl = root.querySelector("ul");
-    let total = 0;
-
-    for (const itemInCart of window.app.store.cart) {
-      const item = document.createElement("cm-cart-item");
-      item.dataset.item = JSON.stringify(itemInCart);
-      total += itemInCart.quantity * itemInCart.product.price;
-
-      if (listEl) {
-        listEl.appendChild(item);
-      }
-    }
 
     if (listEl) {
+      let total = 0;
+
+      for (const itemInCart of window.app.store.cart) {
+        const item = document.createElement("cm-cart-item");
+        item.dataset.item = JSON.stringify(itemInCart);
+        total += itemInCart.quantity * itemInCart.product.price;
+        listEl.appendChild(item);
+      }
+
       const totalEl = document.createElement("li");
 
       totalEl.innerHTML = `

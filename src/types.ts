@@ -48,3 +48,9 @@ export type App = {
   router: Services["Router"];
   store: Services["Store"];
 };
+
+export type User = {
+  name: string;
+  email: string;
+  phone: string;
+};
