@@ -11,9 +11,7 @@ window.app = app;
 
 const main = () => {
   router.initialize();
-  menu.initialize().then((menuItems) => {
-    storeProxy.menu = menuItems ?? [];
-  });
+  menu.initialize();
 };
 
 window.addEventListener("DOMContentLoaded", main);

@@ -5,13 +5,11 @@ import { api } from "./api";
 const initialize = () =>
   api
     .fetchMenu()
-    .then((menu) => menu)
+    .then((menu) => (window.app.store.menu = menu ?? []))
     .catch((error) => console.log(error));
 
 const getProductById = async (productId: number) => {
-  if (!window.app.store.menu.length) {
-    await initialize();
-  }
+  if (!window.app.store.menu.length) await initialize();
 
   for (const category of window.app.store.menu) {
     for (const product of category.products) {
