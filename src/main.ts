@@ -15,3 +15,20 @@ const main = () => {
 };
 
 window.addEventListener("DOMContentLoaded", main);
+window.addEventListener("appcartchange", () => {
+  const badge = document.getElementById("badge");
+  const quantity = window.app.store.cart.reduce(
+    (total, current) => total + current.quantity,
+    0
+  );
+
+  if (badge) {
+    if (quantity) {
+      badge.innerText = String(quantity);
+      badge.removeAttribute("hidden");
+    } else {
+      badge.setAttribute("hidden", "true");
+      badge.innerText = "";
+    }
+  }
+});
