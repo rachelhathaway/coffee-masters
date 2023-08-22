@@ -1,4 +1,4 @@
-import type { MenuItems, Products, Services } from "../types";
+import type { MenuItems, ProductsInCart, Services } from "../types";
 import { EVENTS } from "../constants";
 
 const store: Services["Store"] = {
@@ -9,7 +9,7 @@ const store: Services["Store"] = {
 const set = (
   target: Services["Store"],
   property: keyof Services["Store"],
-  value: MenuItems & Products
+  value: MenuItems & ProductsInCart
 ) => {
   target[property] = value;
 
