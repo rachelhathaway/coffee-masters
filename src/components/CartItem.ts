@@ -35,7 +35,8 @@ export class CartItem extends BaseComponent {
       }
 
       if (deleteBtnEl) {
-        deleteBtnEl.addEventListener("click", () => {
+        deleteBtnEl.addEventListener("click", (event) => {
+          event.preventDefault();
           order.removeFromCart(item.product.id);
         });
       }
