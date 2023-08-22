@@ -48,6 +48,8 @@ export class OrderPage extends BasePageComponent {
       this.#user.fullName = "";
       this.#user.email = "";
       this.#user.phone = "";
+
+      window.app.store.cart = [];
     });
   }
 
