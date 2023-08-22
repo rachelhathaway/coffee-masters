@@ -50,7 +50,7 @@ export type App = {
 };
 
 export type User = {
-  name: string;
+  fullName: string;
   email: string;
   phone: string;
 };

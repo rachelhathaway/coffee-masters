@@ -3,9 +3,15 @@ import { EVENTS, TEMPLATE_IDS } from "../constants";
 import css from "./OrderPage.css?inline";
 import { BasePageComponent } from "./BasePageComponent";
 
+interface OrderFormElements extends HTMLFormControlsCollection {
+  fullName: HTMLInputElement;
+  phone: HTMLInputElement;
+  email: HTMLInputElement;
+}
+
 export class OrderPage extends BasePageComponent {
   #user: User = {
-    name: "",
+    fullName: "",
     phone: "",
     email: "",
   };
@@ -15,7 +21,7 @@ export class OrderPage extends BasePageComponent {
       set(target: User, property: keyof User, value: string) {
         target[property] = value;
 
-        const formElements = form.elements;
+        const formElements = form.elements as OrderFormElements;
 
         formElements[property].value = value;
 
@@ -37,9 +43,9 @@ export class OrderPage extends BasePageComponent {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      alert(`Thanks for your order ${this.#user.name}!`);
+      alert(`Thanks for your order ${this.#user.fullName}!`);
 
-      this.#user.name = "";
+      this.#user.fullName = "";
       this.#user.email = "";
       this.#user.phone = "";
     });
