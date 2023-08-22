@@ -2,6 +2,7 @@ import { TEMPLATE_IDS } from "../constants";
 import css from "./DetailsPage.css?inline";
 import { BasePageComponent } from "./BasePageComponent";
 import { menu } from "../services/menu";
+import { order } from "../services/order";
 import { Product } from "../types";
 
 export class DetailsPage extends BasePageComponent {
@@ -36,7 +37,8 @@ export class DetailsPage extends BasePageComponent {
     }
 
     if (addToCartEl) {
-      addToCartEl.addEventListener("click", () => {
+      addToCartEl.addEventListener("click", async () => {
+        await order.addToCart(product.id);
         window.app.router.navigateTo("/order");
       });
     }

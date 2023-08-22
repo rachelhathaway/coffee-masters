@@ -1,5 +1,6 @@
 import { TEMPLATE_IDS } from "../constants";
 import { BaseComponent } from "./BaseComponent";
+import { order } from "../services/order";
 
 export class ProductItem extends BaseComponent {
   constructor() {
@@ -33,7 +34,7 @@ export class ProductItem extends BaseComponent {
           const target = event.target as HTMLAnchorElement | HTMLButtonElement;
 
           if (target?.tagName.toLowerCase() == "button") {
-            //TODO
+            order.addToCart(product.id);
           } else {
             window.app.router.navigateTo(`/product-${product.id}`);
           }
