@@ -6,7 +6,14 @@ export type Product = {
   price: number;
 };
 
+export type ProductInCart = {
+  product: Product;
+  quantity: number;
+};
+
 export type Products = Product[];
+
+export type ProductsInCart = ProductInCart[];
 
 export type MenuItem = {
   name: string;
@@ -23,13 +30,17 @@ export type Services = {
     getProductById: (productId: number) => Promise<Product | undefined>;
     initialize: () => Promise<void | MenuItems>;
   };
+  Order: {
+    addToCart: (productId: number) => Promise<void>;
+    removeFromCart: (productId: number) => void;
+  };
   Router: {
     initialize: () => void;
     navigateTo: (url: string, addToHistory?: boolean) => void;
   };
   Store: {
     menu: MenuItems;
-    cart: Products;
+    cart: ProductsInCart;
   };
 };
 
